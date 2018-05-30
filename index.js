@@ -29,7 +29,8 @@ type Props = {
   onStartShouldSetResponderCapture: Function,
   isOpen: bool,
   bounceBackOnOverdraw: bool,
-  autoClosing: bool
+  autoClosing: bool,
+  overlayColor: string
 };
 
 type Event = {
@@ -137,7 +138,7 @@ export default class SideMenu extends React.Component {
     if (this.isOpen) {
       overlay = (
         <TouchableWithoutFeedback onPress={() => this.openMenu(false)}>
-          <View style={styles.overlay} />
+          <View style={[styles.overlay, { backgroundColor: this.props.overlayColor }]} />
         </TouchableWithoutFeedback>
       );
     }
